@@ -1,0 +1,1 @@
+<div style="color: black;background: greenyellow; width: 100%; height: 100px;">This is news Title:${title}</div>
