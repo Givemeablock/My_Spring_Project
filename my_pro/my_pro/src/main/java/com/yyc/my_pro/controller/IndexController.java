@@ -1,13 +1,20 @@
 package com.yyc.my_pro.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 
 //import java.lang.reflect.Method;
@@ -40,5 +47,35 @@ public class IndexController {
         List<String> colors = Arrays.asList(new String[]{"RED", "BLUE", "YELLOW"});
         model.addAttribute("colors", colors);
         return "news";
+    }
+
+    //获取http信息
+    @RequestMapping("/request")
+    @ResponseBody
+    public String request(HttpServletRequest m_request,
+                          HttpServletResponse m_response,
+                          HttpSession m_session) {
+        //获取请求header
+        StringBuffer sb = new StringBuffer();
+        Enumeration<String> header_names = m_request.getHeaderNames();
+        while (header_names.hasMoreElements()) {
+            String cur = header_names.nextElement();
+            sb.append("Get " + cur + ":::"+ m_request.getHeader(cur) + "<br>");
+        }
+
+        for (Cookie cookie: m_request.getCookies()) {
+            sb.append("Cookie:" + cookie.getName() + "---" + cookie.getValue() + "<br>");
+        }
+        return sb.toString();
+    }
+
+    //重定向
+    @RequestMapping("/redirect/{code}")
+    public RedirectView red(@PathVariable("code") int code) {
+        RedirectView r = new RedirectView("/", true);
+        if (code == 301) {
+            r.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
+        }
+        return r;
     }
 }
