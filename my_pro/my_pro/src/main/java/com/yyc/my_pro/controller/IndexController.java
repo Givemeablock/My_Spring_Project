@@ -1,5 +1,9 @@
 package com.yyc.my_pro.controller;
 
+import com.yyc.my_pro.service.m_service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -95,4 +100,26 @@ public class IndexController {
     public String error_handle(Exception e) {
         return e.getMessage();
     }
+
+    //控制反转
+    @Autowired
+    private m_service m_s;
+    //不需要new直接使用
+    @RequestMapping("/realiable")
+    @ResponseBody
+    public String reliable() {
+        return m_s.say();
+    }
+
+    //log
+    private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+
+    @RequestMapping("/try_log")
+    @ResponseBody
+    public String try_log() {
+        logger.info("Into /try_log url");
+        return "Try log";
+
+    }
+
 }
