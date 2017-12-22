@@ -1,10 +1,14 @@
 package com.yyc.my_pro.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Arrays;
+import java.util.List;
 
 //import java.lang.reflect.Method;
 
@@ -30,7 +34,11 @@ public class IndexController {
     }
 
     @RequestMapping("/ftl")
-    public String news() {
+    //此处的ftl文件后缀必须为ftl,不能是html
+    public String news(Model model) {
+        model.addAttribute("value1", "i am value1");
+        List<String> colors = Arrays.asList(new String[]{"RED", "BLUE", "YELLOW"});
+        model.addAttribute("colors", colors);
         return "news";
     }
 }
