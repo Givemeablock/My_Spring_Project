@@ -3,10 +3,7 @@ package com.yyc.my_pro.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.Cookie;
@@ -25,8 +22,8 @@ public class IndexController {
     //经过解释发现value和path是一样的
     @RequestMapping(path = {"/", "/index"})
     @ResponseBody
-    public String index() {
-        return "Hello Yyc";
+    public String index(HttpSession m_ses) {
+        return "Hello Yyc" + " Current msg:" + m_ses.getAttribute("msg");
     }
 
     @RequestMapping(value = {"/profile/{groupID}/{userID}"})
@@ -71,11 +68,31 @@ public class IndexController {
 
     //重定向
     @RequestMapping("/redirect/{code}")
-    public RedirectView red(@PathVariable("code") int code) {
-        RedirectView r = new RedirectView("/", true);
-        if (code == 301) {
-            r.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
+    public String red(@PathVariable("code") int code, HttpSession m_ses) {
+        //301跳转
+//        RedirectView r = new RedirectView("/", true);
+//        if (code == 301) {
+//            r.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
+//        }
+        m_ses.setAttribute("msg", "Jump from redirect");
+//        return r;
+        //302跳转
+        return "redirect:/";
+    }
+
+    //自定义错误显示
+    @RequestMapping("/admin")
+    @ResponseBody
+    public String admin(@RequestParam(value = "key", required = false) String key) {
+        if (key.equals("admin")) {
+            return "hello admin";
         }
-        return r;
+        throw new IllegalArgumentException("key 错误啦啦啦啦");
+    }
+
+    @ExceptionHandler
+    @ResponseBody
+    public String error_handle(Exception e) {
+        return e.getMessage();
     }
 }
