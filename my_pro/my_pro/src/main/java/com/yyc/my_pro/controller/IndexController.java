@@ -21,7 +21,9 @@ import java.util.List;
 
 //import java.lang.reflect.Method;
 
-@Controller
+//该处注释了因为不用了，仅用于测试
+
+//@Controller
 public class IndexController {
     //此处的注解好像是对调的，
     //经过解释发现value和path是一样的
