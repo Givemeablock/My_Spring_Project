@@ -28,7 +28,7 @@ public class HomeController {
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     //@ResponseBody
     public String index(HttpSession session, Model model) {
-        List<News> newsList = n_s.getLatestNews(0, 10);
+        List<News> newsList = n_s.getLatestNews(0, 0, 10);
         //采用ViewObject来传递关联的信息
         //Freemaker貌似无法这样解析数据
         //

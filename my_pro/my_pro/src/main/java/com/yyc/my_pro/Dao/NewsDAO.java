@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @Mapper
-public interface News_DAO {
+public interface NewsDAO {
     String TABLE_NAME = "news";
     String INSERT_FIELDS = " title, link, image, likeCount, commentCount, createddate, userId ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
@@ -24,7 +24,8 @@ public interface News_DAO {
     @Select({"select * from ", TABLE_NAME, "ORDER BY id DESC\n" +
                 "        LIMIT #{offset},#{limit}"})
     //此处需要加param注解
-    List<News> selectByUserIdAndOffset(@Param("offset") int offset,@Param("limit") int limit);
+    List<News> selectByUserIdAndOffset(@Param("userId") int userId, @Param("offset") int offset,
+                                   @Param("limit") int limit);
 
     @Select({"select * from", TABLE_NAME})
     List<News> get_allnews();

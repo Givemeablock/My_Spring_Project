@@ -1,31 +1,27 @@
 package com.yyc.my_pro;
 
-import com.yyc.my_pro.Dao.News_DAO;
-import com.yyc.my_pro.Dao.User_DAO;
+import com.yyc.my_pro.Dao.NewsDAO;
+import com.yyc.my_pro.Dao.UserDAO;
 import com.yyc.my_pro.model.News;
 import com.yyc.my_pro.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
-import java.util.Random;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @Sql("/sql_init.sql")
 public class InitDatabase {
     @Autowired
-    User_DAO user;
+    UserDAO user;
 
     @Autowired
-    News_DAO n;
+    NewsDAO n;
 
 
     @Test

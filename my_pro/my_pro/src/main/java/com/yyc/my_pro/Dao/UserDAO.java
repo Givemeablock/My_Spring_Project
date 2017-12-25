@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 @Mapper
-public interface User_DAO {
+public interface UserDAO {
     String TABLE_NAME = "user";
     String INSERT_FIELD = "name, password, salt, headUrl";
     String VALUE_FIELD = "id, name, password, salt, headUrl";
