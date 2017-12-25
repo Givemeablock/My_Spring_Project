@@ -1,11 +1,37 @@
 package com.yyc.my_pro.tools;
 
 import java.security.MessageDigest;
+import java.util.Map;
+
+import com.alibaba.fastjson.JSONObject;
+import javafx.beans.binding.ObjectExpression;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class userTool {
     private static final Logger logger = LoggerFactory.getLogger(userTool.class);
+
+    public static String getJSONString(int code) {
+        JSONObject json = new JSONObject();
+        json.put("code", code);
+        return json.toJSONString();
+    }
+
+    public static String getJSONString(int code, Map<String, Object> map) {
+        JSONObject json = new JSONObject();
+        json.put("code", code);
+        for (Map.Entry<String, Object> m : map.entrySet()) {
+            json.put(m.getKey(), m.getValue());
+        }
+        return json.toJSONString();
+    }
+
+    public static String getJSONString(int code, String msg) {
+        JSONObject json = new JSONObject();
+        json.put("code", code);
+        json.put("msg", msg);
+        return json.toJSONString();
+    }
 
     public static String MD5(String key) {
         char hexDigits[] = {
