@@ -4,18 +4,23 @@ import com.yyc.my_pro.model.News;
 import com.yyc.my_pro.model.User;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface User_DAO {
     String TABLE_NAME = "user";
-    String INSERT_FIELD = "name, password, salt, head_url";
-    String VALUE_FIELD = "id, name, password, salt, head_url";
+    String INSERT_FIELD = "name, password, salt, headUrl";
+    String VALUE_FIELD = "id, name, password, salt, headUrl";
 
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELD, ") values (#{name}, #{password}," +
-            "#{salt}, #{head_url})"})
+            "#{salt}, #{headUrl})"})
     int addUser(User user);
 
     @Select({"select * from ", TABLE_NAME, " where id = #{id}"})
     User sel_user(int id);
+
+    @Select({"select * from ", TABLE_NAME})
+    List<User> sel_alluser();
 
     @Update({"update ", TABLE_NAME , " set password=#{password} where id=#{id}"})
     void UpdatePassword(User u);

@@ -35,19 +35,19 @@ public class InitDatabase {
             m.setName(String.format("%d号用户", i));
             m.setId(i);
             m.setPassword(String.format("password%d", i));
-            m.setHead_url("www.example.com");
+            m.setHeadUrl("www.example.com");
             m.setSalt("");
             user.addUser(m);
 
             News news = new News();
-            news.setComment_count(i);
+            news.setCommentCount(i);
             Date date = new Date();
             date.setTime(date.getTime() + 1000*3600*5*i);
-            news.setCreated_date(date);
+            news.setCreatedate(date);
             news.setImage("");
-            news.setLike_count(i+1);
-            news.setUser_id(i);
-            news.setTitle(String.format("User%d_Create", i));
+            news.setLikeCount(i+1);
+            news.setTitle(String.format("User%d_Create___", i));
+            news.setUserId(i);
             news.setLink("My_link");
             n.addNews(news);
 
@@ -57,6 +57,7 @@ public class InitDatabase {
 
         for (int i = 0; i < 10; i ++) {
             User u = user.sel_user(i);
+
             System.out.println(u);
         }
 

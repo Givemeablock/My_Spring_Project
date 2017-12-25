@@ -4,7 +4,7 @@ CREATE TABLE user (
   name varchar(64) NOT NULL DEFAULT '',
   password varchar(128) NOT NULL DEFAULT '',
   salt varchar(32) NOT NULL DEFAULT '',
-  head_url varchar(256) NOT NULL DEFAULT '',
+  headUrl varchar(256) NOT NULL DEFAULT '',
   PRIMARY KEY (id),
   UNIQUE KEY name (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -15,9 +15,9 @@ CREATE TABLE `news` (
   title varchar(128) NOT NULL DEFAULT '',
   link varchar(256) NOT NULL DEFAULT '',
   image varchar(256) NOT NULL DEFAULT '',
-  like_count int NOT NULL,
-  comment_count int NOT NULL,
-  created_date datetime NOT NULL,
-  user_id int(11) NOT NULL,
+  likeCount int NOT NULL,
+  commentCount int NOT NULL,
+  createddate datetime NOT NULL,
+  userId int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

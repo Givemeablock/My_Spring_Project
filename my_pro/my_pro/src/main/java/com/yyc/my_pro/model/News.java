@@ -7,10 +7,10 @@ public class News {
     private String title;
     private String link;
     private String image;
-    private int like_count;
-    private int comment_count;
-    private Date created_date;
-    private int user_id;
+    private int likeCount;
+    private int commentCount;
+    private Date createddate;
+    private int userId;
 
     public int getId() {
         return id;
@@ -32,6 +32,53 @@ public class News {
         return link;
     }
 
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Date getCreatedate() {
+        return createddate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createddate = createdate;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", link='" + link + '\'' +
+                ", image='" + image + '\'' +
+                ", likeCount=" + likeCount +
+                ", commentCount=" + commentCount +
+                ", createdate=" + createddate +
+                ", userId=" + userId +
+
+                '}';
+    }
+
     public void setLink(String link) {
         this.link = link;
     }
@@ -44,35 +91,5 @@ public class News {
         this.image = image;
     }
 
-    public int getLike_count() {
-        return like_count;
-    }
 
-    public void setLike_count(int like_count) {
-        this.like_count = like_count;
-    }
-
-    public int getComment_count() {
-        return comment_count;
-    }
-
-    public void setComment_count(int comment_count) {
-        this.comment_count = comment_count;
-    }
-
-    public Date getCreated_date() {
-        return created_date;
-    }
-
-    public void setCreated_date(Date created_date) {
-        this.created_date = created_date;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
 }

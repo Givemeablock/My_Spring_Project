@@ -12,7 +12,11 @@ public class News_Service {
     @Autowired
     private News_DAO news;
 
-    public List<News> getLatestNews(int userid, int offset, int limit) {
-        return news.selectByUserIdAndOffset(userid, offset, limit);
+    public List<News> getLatestNews() {
+        return news.selectByUserIdAndOffset();
+    }
+
+    public List<News> get_allNews() {
+        return news.get_allnews();
     }
 }
