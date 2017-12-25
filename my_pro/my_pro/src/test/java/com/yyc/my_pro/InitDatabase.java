@@ -1,7 +1,9 @@
 package com.yyc.my_pro;
 
+import com.yyc.my_pro.Dao.LoginTicketDAO;
 import com.yyc.my_pro.Dao.NewsDAO;
 import com.yyc.my_pro.Dao.UserDAO;
+import com.yyc.my_pro.model.LoginTicket;
 import com.yyc.my_pro.model.News;
 import com.yyc.my_pro.model.User;
 import org.junit.Test;
@@ -13,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 import java.util.Random;
+import java.util.UUID;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
@@ -23,6 +26,9 @@ public class InitDatabase {
 
     @Autowired
     NewsDAO n;
+
+    @Autowired
+    LoginTicketDAO l;
 
 
     @Test
@@ -49,15 +55,19 @@ public class InitDatabase {
             news.setLink(String.format("http://www.nowcoder.com/%d.html", i));
             n.addNews(news);
 
+            LoginTicket loginTicket = new LoginTicket();
+            loginTicket.setUserId(i);
+            loginTicket.setId(i);
+            loginTicket.setExpired(new Date(date.getTime() + 1000*3600*24));
+            loginTicket.setStatus(0);
+            loginTicket.setTicket(UUID.randomUUID().toString());
+            l.addTicket(loginTicket);
+
             m.setPassword(String.format("new password%d", i));
             user.UpdatePassword(m);
         }
 
-        for (int i = 0; i < 10; i ++) {
-            User u = user.sel_user(i);
 
-            System.out.println(u);
-        }
 
 
 
