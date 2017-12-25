@@ -5,11 +5,14 @@ import com.yyc.my_pro.model.View_object;
 import com.yyc.my_pro.service.News_Service;
 import com.yyc.my_pro.service.User_Service;
 import com.yyc.my_pro.tools.userTool;
+import freemarker.template.utility.StringUtil;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +48,17 @@ public class LoginController {
             return userTool.getJSONString(1, "注册异常");
         }
 
+    }
+
+    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public String login(@Param("username") String name, @Param("password") String password,
+                        @RequestParam(value = "rember", defaultValue = "0") int rememberme) {
+        Map<String , Object> map = new HashMap<>();
+        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(password)) {
+            map.put("msg", "不能为空");
+        }
+        return "还未完成";
     }
 
 

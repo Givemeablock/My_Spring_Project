@@ -37,7 +37,7 @@ public class HomeController {
         for (News n : newsList) {
             View_object vobject = new View_object();
             vobject.setN(n);
-            System.out.println(n);
+            //System.out.println(n);
             if (u_s.get_user(n.getUserId()) == null) {}
             else {
                 vobject.setU(u_s.get_user(n.getUserId()));
