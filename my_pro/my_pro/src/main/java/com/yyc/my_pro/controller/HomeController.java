@@ -26,26 +26,26 @@ public class HomeController {
     News_Service n_s;
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
+    //@ResponseBody
     public String index(HttpSession session, Model model) {
-        List<News> newsList = n_s.get_allNews();
-        List<User> userlist = u_s.get_alluser();
-        System.out.println(newsList);
-        System.out.println(userlist);
+        List<News> newsList = n_s.getLatestNews(0, 10);
         //采用ViewObject来传递关联的信息
         //Freemaker貌似无法这样解析数据
         //
-//        List<View_object> vo_list = new ArrayList<>();
-//        for (News n : newsList) {
-//            View_object vobject = new View_object();
-//            vobject.setN(n);
-//            System.out.println(n);
-//            vobject.setU(u_s.get_user(n.getUser_id()));
-//            vo_list.add(vobject);
-//        }
-//
-//        model.addAttribute("vo_list", vo_list);
-        //return "home";
-        return "test";
+        List<View_object> vo_list = new ArrayList<>();
+        for (News n : newsList) {
+            View_object vobject = new View_object();
+            vobject.setN(n);
+            System.out.println(n);
+            if (u_s.get_user(n.getUserId()) == null) {}
+            else {
+                vobject.setU(u_s.get_user(n.getUserId()));
+                vo_list.add(vobject);
+            }
+        }
+
+        model.addAttribute("vo_list", vo_list);
+        return "home";
+
     }
 }

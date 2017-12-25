@@ -12,8 +12,8 @@ public class News_Service {
     @Autowired
     private News_DAO news;
 
-    public List<News> getLatestNews() {
-        return news.selectByUserIdAndOffset();
+    public List<News> getLatestNews(int offset, int limit) {
+        return news.selectByUserIdAndOffset(offset, limit);
     }
 
     public List<News> get_allNews() {

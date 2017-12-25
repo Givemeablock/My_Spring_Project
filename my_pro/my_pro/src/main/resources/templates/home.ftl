@@ -66,32 +66,33 @@
 
                     <div class="post">
                         <div class="votebar">
-                            <button class="click-like up" aria-pressed="false" title="赞同"><i class="vote-arrow"></i>${vo.n.getLike_count()}<span class="count"></span></button>
+                            <button class="click-like up" aria-pressed="false" title="赞同"><i class="vote-arrow"></i>${vo.getN().getLikeCount()}<span class="count"></span></button>
                             <button class="click-dislike down" aria-pressed="true" title="反对"><i class="vote-arrow"></i>
                             </button>
                         </div>
                         <div class="content" data-url="http://nowcoder.com/posts/5l3hjr">
                             <div >
-                                <img class="content-img" src="${vo.n.getImage()}" alt="">
+                                <img class="content-img" src="${vo.getN().getImage()}" alt="">
                             </div>
                             <div class="content-main">
                                 <h3 class="title">
-                                    <a target="_blank" rel="external nofollow" href="${vo.n.getLink()}">${vo.n.title}</a>
+                                    <a target="_blank" rel="external nofollow" href="${vo.getN().getLink()}">${vo.getN().getTitle()}</a>
                                 </h3>
                                 <div class="meta">
 
                                     <span>
-                                            <i class="fa icon-comment"></i> ${vo.n.getComment_count()}
+                                            <i class="fa icon-comment"></i> ${vo.getN().getCommentCount()}
                                         </span>
                                 </div>
                             </div>
                         </div>
                         <div class="user-info">
                             <div class="user-avatar">
+                                <img href="${vo.getU().getHeadUrl()}"/>
                             </div>
                         </div>
 
-                        <div class="subject-name">来自</a></div>
+                        <div class="subject-name">来自${vo.getU().getName()}</a></div>
                     </div>
                     </#list>
 
