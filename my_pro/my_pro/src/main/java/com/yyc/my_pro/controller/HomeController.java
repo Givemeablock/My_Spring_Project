@@ -5,6 +5,7 @@ import com.yyc.my_pro.model.User;
 import com.yyc.my_pro.model.View_object;
 import com.yyc.my_pro.service.News_Service;
 import com.yyc.my_pro.service.User_Service;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +44,7 @@ public class HomeController {
                 vo_list.add(vobject);
             }
         }
-
+        //System.out.println(u_s.get_user(1));
         model.addAttribute("vo_list", vo_list);
         return "home";
 

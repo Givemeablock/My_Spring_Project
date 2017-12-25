@@ -88,10 +88,10 @@
                         </div>
                         <div class="user-info">
                             <div class="user-avatar">
-                                <img href="${vo.getU().getHeadUrl()}"/>
+
                             </div>
                         </div>
-
+                        <img href="${vo.getU().getHeadUrl()}"/>
                         <div class="subject-name">来自${vo.getU().getName()}</a></div>
                     </div>
                     </#list>

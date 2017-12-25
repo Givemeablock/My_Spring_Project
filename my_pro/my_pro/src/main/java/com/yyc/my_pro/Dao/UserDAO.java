@@ -19,6 +19,9 @@ public interface UserDAO {
     @Select({"select * from ", TABLE_NAME, " where id = #{id}"})
     User sel_user(int id);
 
+    @Select({"select * from ", TABLE_NAME, "where name = #{name}"})
+    User sel_by_name(String name);
+
     @Select({"select * from ", TABLE_NAME})
     List<User> sel_alluser();
 
