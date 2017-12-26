@@ -39,9 +39,14 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class=""><a href="http://nowcoder.com/explore">发现</a></li>
 
-                    <li class="js-login"><a href="javascript:void(0);">$!{user.name}</a></li>
+                    <#if user??>
 
-                    <li class="js-login"><a href="javascript:void(0);">登陆</a></li>
+
+                        <li class="js-login"><a href="javascript:void(0);">${user.name}</a></li>
+                    <#else >
+                        <li class="js-login"><a href="javascript:void(0);">登陆</a></li>
+                    </#if>
+
                 </ul>
 
             </nav>
