@@ -64,7 +64,7 @@ public class PassportInterceptor implements HandlerInterceptor{
                            ModelAndView modelAndView) throws Exception {
         if (modelAndView != null && hostHolder.getUser() != null) {
             modelAndView.addObject("user", hostHolder.getUser());
-            System.out.println(hostHolder.getUser());
+            //System.out.println(hostHolder.getUser());
         }
     }
 

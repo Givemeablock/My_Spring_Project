@@ -9,6 +9,7 @@ import freemarker.template.utility.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CookieValue;
 import sun.misc.UUDecoder;
 import sun.security.krb5.internal.Ticket;
 
@@ -114,4 +115,8 @@ public class User_Service {
     }
 
     public List<User> get_alluser() { return u.sel_alluser(); }
+
+    public void logout(@CookieValue("ticket") String ticket) {
+        l.updateStatus(ticket, 1);
+    }
 }

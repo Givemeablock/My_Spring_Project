@@ -84,20 +84,21 @@
                                 <h3 class="title">
                                     <a target="_blank" rel="external nofollow" href="${vo.getN().getLink()}">${vo.getN().getTitle()}</a>
                                 </h3>
-                                <div class="meta">
-
-                                    <span>
+                                <div class="content-main">
+                                    <div class="meta">
+                                        ${vo.getN().getLink()}
+                                        <span>
                                             <i class="fa icon-comment"></i> ${vo.getN().getCommentCount()}
                                         </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="user-info">
                             <div class="user-avatar">
-
+                                <a href="/user/${vo.getU().getId()}/"><img width="32" class="img-circle" src="${vo.getU().getHeadUrl()}"></a>
                             </div>
                         </div>
-                        <img href="${vo.getU().getHeadUrl()}"/>
                         <div class="subject-name">来自${vo.getU().getName()}</a></div>
                     </div>
                     </#list>
@@ -130,7 +131,9 @@
 
 
   </div>
-
+    <#if pop??>
+        <script>window.loginpop = ${pop};</script>
+    </#if>
     <script type="text/javascript" src="scripts/jquery.js"></script>
     <script type="text/javascript" src="scripts/main/base/base.js"></script>
     <script type="text/javascript" src="scripts/main/base/util.js"></script>

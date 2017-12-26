@@ -1,5 +1,6 @@
 package com.yyc.my_pro.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.yyc.my_pro.model.News;
 import com.yyc.my_pro.model.User;
 import com.yyc.my_pro.model.View_object;
@@ -11,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,5 +51,13 @@ public class HomeController {
         model.addAttribute("vo_list", vo_list);
         return "home";
 
+    }
+
+    @RequestMapping("/user/{userId}")
+    public String userIndex(Model model, @PathParam("userId") int userId,
+                            @RequestParam(value = "pop", defaultValue = "0") int pop) {
+        model.addAttribute("vo_list", n_s.getLatestNews(userId, 0, 10));
+        model.addAttribute("pop", pop);
+        return "home";
     }
 }
