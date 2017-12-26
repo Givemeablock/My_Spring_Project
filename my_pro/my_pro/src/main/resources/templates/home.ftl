@@ -30,7 +30,7 @@
 
                 <a href="http://nowcoder.com/" class="navbar-brand logo">
                   <h1>News</h1>
-                  <h3>Today News is over here</h3>
+                  <h3>News Over here!!</h3>
                 </a>
             </div>
 
