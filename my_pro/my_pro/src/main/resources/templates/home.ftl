@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
-    <link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/styles/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/font-awesome.min.css">
 
-    <link rel="stylesheet" media="all" href="/styles/style.css">
+    <link rel="stylesheet" media="all" href="styles/style.css">
 
-    <script src="/scripts/hm.js"></script>
-    <script src="/scripts/detail.js"></script>
+    <script src="scripts/hm.js"></script>
+    <script src="scripts/detail.js"></script>
 
-    <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/scripts/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.qrcode.min.js"></script>
 </head>
 <body class="welcome_index">
 
@@ -126,14 +126,14 @@
 
   </div>
 
-    <script type="text/javascript" src="/scripts/jquery.js"></script>
-    <script type="text/javascript" src="/scripts/main/base/base.js"></script>
-    <script type="text/javascript" src="/scripts/main/base/util.js"></script>
-    <script type="text/javascript" src="/scripts/main/base/event.js"></script>
-    <script type="text/javascript" src="/scripts/main/component/component.js"></script>
-    <script type="text/javascript" src="/scripts/main/component/popup.js"></script>
-    <script type="text/javascript" src="/scripts/main/component/popupLogin.js"></script>
-    <script type="text/javascript" src="/scripts/main/site/home.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/main/base/base.js"></script>
+    <script type="text/javascript" src="scripts/main/base/util.js"></script>
+    <script type="text/javascript" src="scripts/main/base/event.js"></script>
+    <script type="text/javascript" src="scripts/main/component/component.js"></script>
+    <script type="text/javascript" src="scripts/main/component/popup.js"></script>
+    <script type="text/javascript" src="scripts/main/component/popupLogin.js"></script>
+    <script type="text/javascript" src="scripts/main/site/home.js"></script>
 
 
 

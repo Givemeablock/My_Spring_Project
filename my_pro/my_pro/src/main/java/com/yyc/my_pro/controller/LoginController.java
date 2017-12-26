@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,14 +34,21 @@ public class LoginController {
     @Autowired
     User_Service u_s;
 
-    @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/reg", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String reg(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
-                      @RequestParam(value = "rember", defaultValue = "0") int remember) {
+                      @RequestParam(value = "rember", defaultValue = "0") int remember,
+                      HttpServletResponse response) {
         try {
             Map<String, Object> newusermsg = u_s.reigster(username, password);
             if (newusermsg.containsKey("ticket")) {
+                Cookie cookie = new Cookie("ticket", newusermsg.get("ticket").toString());
+                cookie.setPath("/");
+                if (remember > 0) {
+                    cookie.setMaxAge(3600*24*5);
+                }
+                response.addCookie(cookie);
                 return userTool.getJSONString(0, "注册成功");
             }
             return userTool.getJSONString(1, newusermsg);
@@ -53,10 +62,17 @@ public class LoginController {
     @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String login(@RequestParam("username") String name, @RequestParam("password") String password,
-                        @RequestParam(value = "rember", defaultValue = "0") int rememberme) {
+                        @RequestParam(value = "rember", defaultValue = "0") int remember,
+                        HttpServletResponse response) {
         try {
             Map<String , Object> loginmsg = u_s.login(name, password);
             if (!loginmsg.get("ticket").toString().isEmpty()) {
+                Cookie cookie = new Cookie("ticket", loginmsg.get("ticket").toString());
+                cookie.setPath("/");
+                if (remember > 0) {
+                    cookie.setMaxAge(3600*24*5);
+                }
+                response.addCookie(cookie);
                 return userTool.getJSONString(0, "登陆成功");
             }
             return userTool.getJSONString(1, "登陆失败");
