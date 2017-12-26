@@ -39,7 +39,7 @@ public class LoginController {
                       @RequestParam(value = "rember", defaultValue = "0") int remember) {
         try {
             Map<String, Object> newusermsg = u_s.reigster(username, password);
-            if (newusermsg.isEmpty()) {
+            if (newusermsg.containsKey("ticket")) {
                 return userTool.getJSONString(0, "注册成功");
             }
             return userTool.getJSONString(1, newusermsg);
@@ -52,13 +52,19 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String login(@Param("username") String name, @Param("password") String password,
+    public String login(@RequestParam("username") String name, @RequestParam("password") String password,
                         @RequestParam(value = "rember", defaultValue = "0") int rememberme) {
-        Map<String , Object> map = new HashMap<>();
-        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(password)) {
-            map.put("msg", "不能为空");
+        try {
+            Map<String , Object> loginmsg = u_s.login(name, password);
+            if (!loginmsg.get("ticket").toString().isEmpty()) {
+                return userTool.getJSONString(0, "登陆成功");
+            }
+            return userTool.getJSONString(1, "登陆失败");
         }
-        return "还未完成";
+        catch (Exception e) {
+            logger.error("登陆异常" + e.getMessage());
+            return userTool.getJSONString(1, "登陆异常");
+        }
     }
 
 
