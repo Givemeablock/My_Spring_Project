@@ -22,7 +22,7 @@ import java.io.IOException;
 @Controller
 public class NewsController {
 
-    private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+    private static final Logger logger = LoggerFactory.getLogger(NewsController.class);
 
     @Autowired
     News_Service n_s;
