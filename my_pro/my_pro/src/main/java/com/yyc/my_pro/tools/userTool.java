@@ -7,9 +7,26 @@ import com.alibaba.fastjson.JSONObject;
 import javafx.beans.binding.ObjectExpression;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 public class userTool {
     private static final Logger logger = LoggerFactory.getLogger(userTool.class);
+
+    private static String[] IMAGE_TYPE = new String[] {"png", "jpg", "bmp", "jpeg", "gif"};
+
+    public static String local_domain = "127.0.0.1:8080/";
+
+    public static String upload_path = "D:/JAVA_PRO/images/";
+
+    public static boolean isAllowedType(String type) {
+        for (String ty : IMAGE_TYPE) {
+            if (ty.equals(type)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public static String getJSONString(int code) {
         JSONObject json = new JSONObject();
